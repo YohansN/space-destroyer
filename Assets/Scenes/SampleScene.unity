@@ -274,6 +274,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationalSpeed: 100
+  impulseSpeed: 100
+  speed: 100
+  rig: {fileID: 0}
 --- !u!212 &1663599543
 SpriteRenderer:
   m_ObjectHideFlags: 0
