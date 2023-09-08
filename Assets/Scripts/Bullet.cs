@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float bulletSpeed;
     private readonly float bulletLife = 5;
 
     void Awake()
@@ -15,7 +14,8 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject);
-        Destroy(collision.gameObject);
+        //Destroi o objeto que colidiu com a bala:
+        //Destroy(collision.gameObject);
     }
 
 }
