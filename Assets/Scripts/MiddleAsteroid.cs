@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 
-public class BigAsteroid : MonoBehaviour
+public class MiddleAsteroid : MonoBehaviour
 {
-    public float AsteroidLife = 3f;
+    public float AsteroidLife = 2f;
     //public float AsteroidSpeed;
 
     public GameObject[] childAsteroids;
@@ -33,10 +31,11 @@ public class BigAsteroid : MonoBehaviour
 
     void SpawnChildAsteroids()
     {
-        foreach(GameObject child in childAsteroids)
+        foreach (GameObject child in childAsteroids)
         {
             var childAsteroid = Instantiate(child, transform.position, transform.rotation);
         }
-        
+
     }
+
 }

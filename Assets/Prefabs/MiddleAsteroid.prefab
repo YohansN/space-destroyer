@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 723201435855987347}
   - component: {fileID: 1764793565091512632}
   - component: {fileID: -6692578681619199638}
-  m_Layer: 0
-  m_Name: MediumAsteroid
+  - component: {fileID: -7864864783204547587}
+  m_Layer: 8
+  m_Name: MiddleAsteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -148,3 +149,20 @@ CircleCollider2D:
   m_Offset: {x: -0.010000004, y: 0.16499998}
   serializedVersion: 2
   m_Radius: 0.15499999
+--- !u!114 &-7864864783204547587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2319941950512031309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bb8049643b00cc46a8f7dfedb00f06b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AsteroidLife: 2
+  childAsteroids:
+  - {fileID: 2319941950512031309, guid: 6a8225ff96d3dd94287d108425b8fe81, type: 3}
+  - {fileID: 2319941950512031309, guid: 6a8225ff96d3dd94287d108425b8fe81, type: 3}
+  childAsteroidSpeed: 2
