@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public float playerLife = 10f;
     public float rotationalSpeed;
     public float impulseSpeed;
     public Rigidbody2D rig;
@@ -56,7 +59,32 @@ public class Player : MonoBehaviour
             bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletFiringSpeed;
         }
         #endregion
+
+        Debug.Log("Vida: " + playerLife);
     }
+
+
+    #region Player Life
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Asteroid"))
+        {
+            TakeDamage();
+        }
+        
+        
+    }
+
+    void TakeDamage()
+    {
+        playerLife--;
+        if(playerLife <= 0)
+        {
+            Debug.Log("Game Over");
+            Destroy(gameObject);
+        }
+    }
+    #endregion
 
     private void FixedUpdate()
     {
