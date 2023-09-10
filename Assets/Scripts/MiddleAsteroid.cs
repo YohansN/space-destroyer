@@ -6,8 +6,8 @@ public class MiddleAsteroid : AsteroidBehavior
 {
     public override void DealDamage()
     {
-        AsteroidLife--;
-        if (AsteroidLife <= 0)
+        asteroidLife--;
+        if (asteroidLife <= 0)
         {
             Destroy(gameObject);
             SpawnChildAsteroids();

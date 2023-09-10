@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    #region Properties
     public float playerLife = 10f;
     public float rotationalSpeed;
     public float impulseSpeed;
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
     public GameObject bulletPrefab;
     public float bulletFiringSpeed;
     public Transform bulletSpawnPoint;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -60,7 +62,7 @@ public class Player : MonoBehaviour
         }
         #endregion
 
-        Debug.Log("Vida: " + playerLife);
+        //Debug.Log("Vida: " + playerLife);
     }
 
 
@@ -86,8 +88,4 @@ public class Player : MonoBehaviour
     }
     #endregion
 
-    private void FixedUpdate()
-    {
-
-    }
 }

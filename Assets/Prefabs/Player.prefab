@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2319941950512031309
+--- !u!1 &8708465944742312291
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7025981591739680272}
-  - component: {fileID: 723201435855987347}
-  - component: {fileID: 1764793565091512632}
-  - component: {fileID: -6692578681619199638}
-  - component: {fileID: -7864864783204547587}
-  m_Layer: 8
-  m_Name: MiddleAsteroid
-  m_TagString: Asteroid
+  - component: {fileID: 4420598343681406664}
+  - component: {fileID: 7074336697544375805}
+  - component: {fileID: -4471464929262545663}
+  - component: {fileID: -1477225647614948345}
+  - component: {fileID: -6994880551708947270}
+  m_Layer: 6
+  m_Name: Player
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7025981591739680272
+--- !u!4 &4420598343681406664
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2319941950512031309}
+  m_GameObject: {fileID: 8708465944742312291}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 7}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &723201435855987347
+--- !u!212 &7074336697544375805
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2319941950512031309}
+  m_GameObject: {fileID: 8708465944742312291}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,51 +76,24 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7104699197003353896, guid: 9ffeaae8feaf7a84faaaabbfe08e1246, type: 3}
+  m_Sprite: {fileID: 4864447398565886458, guid: 1f32dbc77a7806346ac2db1667363cd9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.3, y: 0.31}
+  m_Size: {x: 0.31, y: 0.22}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &1764793565091512632
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!60 &-4471464929262545663
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2319941950512031309}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 5
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!58 &-6692578681619199638
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2319941950512031309}
+  m_GameObject: {fileID: 8708465944742312291}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -146,26 +119,70 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.010000004, y: 0.16499998}
-  serializedVersion: 2
-  m_Radius: 0.15499999
---- !u!114 &-7864864783204547587
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.516129, y: 0.40909094}
+    oldSize: {x: 0.31, y: 0.22}
+    newSize: {x: 0.31, y: 0.22}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.03, y: 0.12999998}
+      - {x: -0.16, y: -0.010000009}
+      - {x: -0.16, y: -0.07000001}
+      - {x: -0.13, y: -0.09000001}
+      - {x: 0.089999996, y: -0.09000001}
+      - {x: 0.14999999, y: -0.080000006}
+      - {x: 0.14999999, y: 0.00999999}
+      - {x: 0.06, y: 0.12999998}
+  m_UseDelaunayMesh: 0
+--- !u!50 &-1477225647614948345
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8708465944742312291}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &-6994880551708947270
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2319941950512031309}
+  m_GameObject: {fileID: 8708465944742312291}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bb8049643b00cc46a8f7dfedb00f06b, type: 3}
+  m_Script: {fileID: 11500000, guid: f5ac5974f242b0e449d92564f75174d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asteroidLife: 2
-  asteroidLifeTime: 30
-  asteroidSpeed: 200
-  targetObject: {fileID: 8708465944742312291, guid: b07c5d5e70711b84fbbcaf91edbfe289, type: 3}
-  wreckedAsteroids:
-  - {fileID: 3354712562229567777, guid: 819fda14868526c4c83c566bec6bde36, type: 3}
-  - {fileID: 3354712562229567777, guid: 819fda14868526c4c83c566bec6bde36, type: 3}
-  wreckedAsteroidSpeed: 5
+  playerLife: 10
+  rotationalSpeed: 100
+  impulseSpeed: 1
+  rig: {fileID: 0}
+  bulletPrefab: {fileID: 8448361213031526890, guid: 7feadc57b6dc56b4eb7b8787cb090e41, type: 3}
+  bulletFiringSpeed: 5
+  bulletSpawnPoint: {fileID: 0}

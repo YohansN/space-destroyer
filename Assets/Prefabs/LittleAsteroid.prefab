@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6505341450733983232}
   m_Layer: 8
   m_Name: LittleAsteroid
-  m_TagString: Untagged
+  m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,4 +161,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbc065840ffe3ce449801fac363cfe9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AsteroidLife: 1
+  asteroidLife: 1
+  asteroidLifeTime: 30
+  asteroidSpeed: 150
+  targetObject: {fileID: 8708465944742312291, guid: b07c5d5e70711b84fbbcaf91edbfe289, type: 3}
+  wreckedAsteroids: []
+  wreckedAsteroidSpeed: 0

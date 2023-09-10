@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -2109316182560567040}
   m_Layer: 8
   m_Name: BigAsteroid
-  m_TagString: Untagged
+  m_TagString: Asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,9 +161,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c029bceb9c0527945aefa5243c3e3bc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AsteroidLife: 3
-  childAsteroids:
-  - {fileID: 2319941950512031309, guid: 6a8225ff96d3dd94287d108425b8fe81, type: 3}
-  - {fileID: 2319941950512031309, guid: 6a8225ff96d3dd94287d108425b8fe81, type: 3}
-  - {fileID: 2319941950512031309, guid: 6a8225ff96d3dd94287d108425b8fe81, type: 3}
-  childAsteroidSpeed: 2
+  asteroidLife: 3
+  asteroidLifeTime: 30
+  asteroidSpeed: 300
+  targetObject: {fileID: 8708465944742312291, guid: b07c5d5e70711b84fbbcaf91edbfe289, type: 3}
+  wreckedAsteroids:
+  - {fileID: 3354712562229567777, guid: 819fda14868526c4c83c566bec6bde36, type: 3}
+  - {fileID: 3354712562229567777, guid: 819fda14868526c4c83c566bec6bde36, type: 3}
+  - {fileID: 3354712562229567777, guid: 819fda14868526c4c83c566bec6bde36, type: 3}
+  wreckedAsteroidSpeed: 5
