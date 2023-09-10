@@ -55,19 +55,20 @@ public class AsteroidBehavior : MonoBehaviour
 
     public void SpawnChildAsteroids()
     {
-        float x = 1f;
         foreach (GameObject wreckedAsteroid in wreckedAsteroids)
         {
-            var wrecked = Instantiate(wreckedAsteroid, transform.position * x, transform.rotation);
-            x += 0.02f;
+            //Define a posição de spawn dos asteroids filhos
+            float y = Random.Range(0f, 1f);
+            float x = Random.Range(0f, 1f);
+            var wrecked = Instantiate(wreckedAsteroid, transform.position * (x + y), transform.rotation);
 
-            Rigidbody2D rb = wrecked.GetComponent<Rigidbody2D>();
+            //Define a direção que os asteroids filhos vão seguir
+            Rigidbody2D rbWreckerd = wrecked.GetComponent<Rigidbody2D>();
             //Pega a direção em que o Asteroid Pai estava indo e atribui ao filho.
-            var target = targetObject.transform;
-            Vector2 targetPosition = new Vector2(target.position.x, target.position.y);
-            var normalizedDirection = (targetPosition - rb.position).normalized;
-            rb.velocity = (normalizedDirection * wreckedAsteroidSpeed);
-            
+            var rb = GetComponent<Rigidbody2D>();
+            Vector2 randomAdditional = new Vector2(x, y);
+            rbWreckerd.velocity = rb.velocity.normalized * wreckedAsteroidSpeed * randomAdditional;
+
         }
     }
     #endregion
