@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
         }
         #endregion
 
-        //Debug.Log("Vida: " + playerLife);
+        Debug.Log("Posição atual: " + transform.position);
     }
 
 

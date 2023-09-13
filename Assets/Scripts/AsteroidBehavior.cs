@@ -10,7 +10,6 @@ public class AsteroidBehavior : MonoBehaviour
     public float asteroidLife;
     public float asteroidLifeTime = 20f;
     public float asteroidSpeed;
-    public GameObject targetObject;
 
     public GameObject[] wreckedAsteroids;
     public float wreckedAsteroidSpeed = 5f;
@@ -20,16 +19,6 @@ public class AsteroidBehavior : MonoBehaviour
     public void Awake()
     {  
         Destroy(gameObject, asteroidLifeTime);
-    }
-
-    public void Start()
-    {
-        //Define a diração inicial e movimentação do asteroid para onde o player está.
-        var rig = GetComponent<Rigidbody2D>();
-        var target = targetObject.transform;
-        Vector2 targetPosition = new Vector2(target.position.x, target.position.y);
-        var normalizedDirection = (targetPosition - rig.position).normalized;
-        rig.AddForce(normalizedDirection * asteroidSpeed);
     }
 
 
@@ -52,6 +41,7 @@ public class AsteroidBehavior : MonoBehaviour
             //SpawnChildAsteroids();
         }
     }
+    #endregion
 
     public void SpawnChildAsteroids()
     {
@@ -71,6 +61,5 @@ public class AsteroidBehavior : MonoBehaviour
 
         }
     }
-    #endregion
 
 }
