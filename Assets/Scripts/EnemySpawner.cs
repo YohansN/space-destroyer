@@ -74,9 +74,8 @@ public class EnemySpawner : MonoBehaviour
         var playerCurrentPosition = GameObject.FindGameObjectWithTag("Player");
         Vector2 targetPosition = new Vector2(playerCurrentPosition.transform.position.x, playerCurrentPosition.transform.position.y);
         var normalizedDirection = (targetPosition - enemyRb.position).normalized;
-        Debug.Log("Posição de mira dos inimigos:" + targetPosition);
+        //Debug.Log("Posição de mira dos inimigos:" + targetPosition);
 
         enemyRb.AddForce(normalizedDirection * enemyBehavior.asteroidSpeed);
-        Debug.Log("Direção do asterois: " + normalizedDirection * enemyBehavior.asteroidSpeed);
     }
 }

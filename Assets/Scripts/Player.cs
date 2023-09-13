@@ -8,15 +8,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     #region Properties
-    public float playerLife = 10f;
-    public float rotationalSpeed;
-    public float impulseSpeed;
-    public Rigidbody2D rig;
+    [SerializeField] private float playerLife = 10f;
+    [SerializeField] private float rotationalSpeed;
+    [SerializeField] private float impulseSpeed;
+    [SerializeField] private Rigidbody2D rig;
 
     //Bullet properties
-    public GameObject bulletPrefab;
-    public float bulletFiringSpeed;
-    public Transform bulletSpawnPoint;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private float bulletFiringSpeed;
+    [SerializeField] private Transform bulletSpawnPoint;
     #endregion
 
     // Start is called before the first frame update
@@ -62,7 +62,6 @@ public class Player : MonoBehaviour
         }
         #endregion
 
-        Debug.Log("Posição atual: " + transform.position);
     }
 
 
