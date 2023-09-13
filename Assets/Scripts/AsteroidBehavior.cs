@@ -48,9 +48,10 @@ public class AsteroidBehavior : MonoBehaviour
         foreach (GameObject wreckedAsteroid in wreckedAsteroids)
         {
             //Define a posição de spawn dos asteroids filhos
-            float y = Random.Range(0f, 1f);
+            float y = Random.Range(0f, 0.5f);
             float x = Random.Range(0f, 1f);
-            var wrecked = Instantiate(wreckedAsteroid, transform.position * (x + y), transform.rotation);
+            Vector3 wrekedAsteroidPosition = new Vector3(transform.position.x + x, transform.position.y + y, 0); 
+            var wrecked = Instantiate(wreckedAsteroid, wrekedAsteroidPosition, transform.rotation);
 
             //Define a direção que os asteroids filhos vão seguir
             Rigidbody2D rbWreckerd = wrecked.GetComponent<Rigidbody2D>();
