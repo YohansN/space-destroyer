@@ -13,19 +13,23 @@ public class Player : MonoBehaviour
     [SerializeField] private float rotationalSpeed;
     [SerializeField] private float impulseSpeed;
     [SerializeField] private Rigidbody2D rig;
-    [SerializeField] private UiController healthBar;
+    [SerializeField] private UIHealthController healthBar;
+    [SerializeField] private UIScoreController uiScore;
+    private int initialScore = 0;
+    [SerializeField] public int pScore;
 
     //Bullet properties
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletFiringSpeed;
     [SerializeField] private Transform bulletSpawnPoint;
     #endregion
-
+    
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        pScore = initialScore;
         rig = GetComponent<Rigidbody2D>();
     }
 
@@ -56,6 +60,7 @@ public class Player : MonoBehaviour
             rig.AddForce(direction * impulseSpeed);
         }
 
+        Debug.Log("Pontuação: " + this.pScore);
         #endregion
 
         #region Player Shoot
@@ -85,6 +90,14 @@ public class Player : MonoBehaviour
             Debug.Log("Game Over");
             Destroy(gameObject);
         }
+    }
+    #endregion
+
+    #region Score
+    public void SetScore(int score)
+    {
+        this.pScore += score;
+        //uiScore.SetScorePoints(this.score);
     }
     #endregion
 

@@ -164,8 +164,9 @@ MonoBehaviour:
   asteroidLife: 2
   asteroidLifeTime: 30
   asteroidSpeed: 200
-  targetObject: {fileID: 8708465944742312291, guid: b07c5d5e70711b84fbbcaf91edbfe289, type: 3}
+  asteroidReward: 20
   wreckedAsteroids:
   - {fileID: 3354712562229567777, guid: 819fda14868526c4c83c566bec6bde36, type: 3}
   - {fileID: 3354712562229567777, guid: 819fda14868526c4c83c566bec6bde36, type: 3}
   wreckedAsteroidSpeed: 5
+  playerInfo: {fileID: -6994880551708947270, guid: b07c5d5e70711b84fbbcaf91edbfe289, type: 3}

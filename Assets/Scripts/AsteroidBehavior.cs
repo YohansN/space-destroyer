@@ -10,9 +10,12 @@ public class AsteroidBehavior : MonoBehaviour
     public float asteroidLife;
     public float asteroidLifeTime = 20f;
     public float asteroidSpeed;
+    public int asteroidReward;
 
     public GameObject[] wreckedAsteroids;
     public float wreckedAsteroidSpeed = 5f;
+
+    public Player playerInfo;
 
     #endregion
 
@@ -37,11 +40,17 @@ public class AsteroidBehavior : MonoBehaviour
         asteroidLife--;
         if (asteroidLife <= 0)
         {
+            ScoreReward(asteroidReward); //Chama método de recompensa -> Adiciona pontos para o player.
             Destroy(gameObject);
             //SpawnChildAsteroids();
         }
     }
     #endregion
+
+    public virtual void ScoreReward(int score)
+    {
+        playerInfo.SetScore(score);
+    }
 
     public void SpawnChildAsteroids()
     {

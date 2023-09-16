@@ -11,6 +11,7 @@ public class BigAsteroid : AsteroidBehavior
         asteroidLife--;
         if (asteroidLife <= 0)
         {
+            ScoreReward(this.asteroidReward); //Definir na unity
             Destroy(gameObject);
             SpawnChildAsteroids();
         }
