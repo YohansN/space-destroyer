@@ -8,10 +8,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     #region Properties
-    [SerializeField] private float playerLife = 10f;
+    [SerializeField] private int maxHealth = 10;
+    [SerializeField] private int currentHealth;
     [SerializeField] private float rotationalSpeed;
     [SerializeField] private float impulseSpeed;
     [SerializeField] private Rigidbody2D rig;
+    [SerializeField] private UiController healthBar;
 
     //Bullet properties
     [SerializeField] private GameObject bulletPrefab;
@@ -22,6 +24,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         rig = GetComponent<Rigidbody2D>();
     }
 
@@ -69,17 +73,14 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Asteroid"))
-        {
             TakeDamage();
-        }
-        
-        
     }
 
-    void TakeDamage()
+    private void TakeDamage() //Modificar posteriormente para receber diferentes valores de dano.
     {
-        playerLife--;
-        if(playerLife <= 0)
+        currentHealth--;
+        healthBar.SetHealth(currentHealth);
+        if(currentHealth <= 0)
         {
             Debug.Log("Game Over");
             Destroy(gameObject);
