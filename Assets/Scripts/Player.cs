@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     [SerializeField] public int pScore;
 
     //Bullet properties
+    [SerializeField] private float shootCooldown;
+    private float nextShootTime = 0f; 
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletFiringSpeed;
     [SerializeField] private Transform bulletSpawnPoint;
@@ -62,14 +64,14 @@ public class Player : MonoBehaviour
 
         #endregion
 
-        #region Player Shoot
-        if(Input.GetKeyDown(KeyCode.Space)) 
-        {
-            var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation); //Esse codigo pode ser usado para os asteroids
-            bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletFiringSpeed;
-        }
-        #endregion
-
+        if (Input.GetKey(KeyCode.Space) && Time.time >= nextShootTime)
+            Shoot();
+    }
+    private void Shoot()
+    {
+        var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletFiringSpeed;
+        nextShootTime = Time.time + shootCooldown;
     }
 
 
