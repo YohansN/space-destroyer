@@ -14,6 +14,7 @@ public class UIScoreController : MonoBehaviour
 
     private void Update()
     {
+        //Debug.Log("pontuação: "+ playerInfo.pScore);
         scoreText.text = "SCORE: " + playerInfo.pScore.ToString();
     }
     #endregion

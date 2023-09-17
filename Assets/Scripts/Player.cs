@@ -60,7 +60,6 @@ public class Player : MonoBehaviour
             rig.AddForce(direction * impulseSpeed);
         }
 
-        Debug.Log("Pontuação: " + this.pScore);
         #endregion
 
         #region Player Shoot

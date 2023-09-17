@@ -25,7 +25,7 @@ public class AsteroidBehavior : MonoBehaviour
     }
 
 
-    #region Take Damage
+    #region Behave On Collisions
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Bullets") || collision.gameObject.CompareTag("Player"))
@@ -33,8 +33,15 @@ public class AsteroidBehavior : MonoBehaviour
             //Debug.Log("Vida do asteroid: " + AsteroidLife);
             DealDamage();
         }
-    }
 
+        if (collision.gameObject.CompareTag("Shield")){
+            Debug.Log("REDIRECIONADO");
+            Redirection();
+        }
+    }
+    #endregion
+
+    #region Take Damage
     public virtual void DealDamage()
     {
         asteroidLife--;
@@ -46,6 +53,11 @@ public class AsteroidBehavior : MonoBehaviour
         }
     }
     #endregion
+
+    public void Redirection()
+    {
+        GetComponent<Rigidbody2D>().velocity *= -3;
+    }
 
     public virtual void ScoreReward(int score)
     {
