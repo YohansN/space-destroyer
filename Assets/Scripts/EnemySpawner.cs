@@ -43,8 +43,8 @@ public class EnemySpawner : MonoBehaviour
         #endregion
         
         //Define aleatoriamente qual inimigo spawnar daquela lista de inimigos.
-        int rand2 = Random.Range(0, enemysPrefab2.Length - 1);
-        int rand3 = Random.Range(0, enemysPrefab3.Length - 1);
+        int rand2 = Random.Range(0, enemysPrefab2.Length);
+        int rand3 = Random.Range(0, enemysPrefab3.Length);
 
         if (enemyWaveType == 1)
         {
@@ -59,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
         }
         else if (enemyWaveType == 3)
         {
-            GameObject enemy = Instantiate(enemysPrefab2[rand3], spawnPosition, Quaternion.identity);
+            GameObject enemy = Instantiate(enemysPrefab3[rand3], spawnPosition, Quaternion.identity);
             EnemyDirectionOnSpawn(enemy);
         }
 
