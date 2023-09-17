@@ -33,13 +33,13 @@ public class PlayerShield : MonoBehaviour
 
     public IEnumerator ShieldOn()
     {
-        Debug.Log("Escuto ativado");
+        //Debug.Log("Escuto ativado");
         shieldCollider.enabled = true;
         shieldSprite.enabled = true;
 
         yield return new  WaitForSeconds(shieldTime);
         shieldCollider.enabled = false;
         shieldSprite.enabled = false;
-        Debug.Log("Escuto desativado");
+        //Debug.Log("Escuto desativado");
     }
 }
