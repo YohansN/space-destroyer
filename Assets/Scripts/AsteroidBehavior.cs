@@ -35,7 +35,7 @@ public class AsteroidBehavior : MonoBehaviour
         }
 
         if (collision.gameObject.CompareTag("Shield")){
-            Debug.Log("REDIRECIONADO");
+            //Debug.Log("REDIRECIONADO");
             Redirection();
         }
     }

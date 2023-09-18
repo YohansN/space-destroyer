@@ -6,9 +6,14 @@ using UnityEngine.U2D;
 public class PlayerShield : MonoBehaviour
 {
     [SerializeField] private bool isShieldActive = true;
-    [SerializeField] private float shieldTime = 3f;
+    [SerializeField] private float shieldActiveTime = 3f;
+    [SerializeField] private float shieldRechargeTime = 10f;
     [SerializeField] private Collider2D shieldCollider;
     [SerializeField] private SpriteRenderer shieldSprite;
+    [SerializeField] private int shieldsLeft;
+    public UIShieldController uiShield;
+    [SerializeField] private bool shieldIsOn = false;
+    [SerializeField] private bool isRecharging = false;
 
 
     // Start is called before the first frame update
@@ -24,22 +29,38 @@ public class PlayerShield : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        uiShield.shieldsLeft = shieldsLeft; //Atualiza a UI
+        if ((Input.GetKeyDown(KeyCode.LeftShift)) && (shieldsLeft != 0) && !shieldIsOn)
         {
             StartCoroutine(ShieldOn());
         }
-        
+
+        if (shieldsLeft < uiShield.numOfShieldsVisible && !isRecharging)
+        {
+            StartCoroutine(ShieldRecharge());
+        }
     }
 
     public IEnumerator ShieldOn()
     {
+        shieldIsOn = true;
+        shieldsLeft--;
         //Debug.Log("Escuto ativado");
         shieldCollider.enabled = true;
         shieldSprite.enabled = true;
 
-        yield return new  WaitForSeconds(shieldTime);
+        yield return new  WaitForSeconds(shieldActiveTime);
         shieldCollider.enabled = false;
         shieldSprite.enabled = false;
         //Debug.Log("Escuto desativado");
+        shieldIsOn = false;
+    }
+
+    public IEnumerator ShieldRecharge()
+    {
+        isRecharging = true;
+        yield return new WaitForSeconds(shieldRechargeTime);
+        shieldsLeft++;
+        isRecharging = false;
     }
 }
