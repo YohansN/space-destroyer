@@ -25,6 +25,11 @@ public class Player : MonoBehaviour
     private int initialScore = 0;
     [SerializeField] public int pScore;
 
+    //Sound Effects
+    [SerializeField] private AudioSource shootSF;
+    [SerializeField] private AudioSource hitSF;
+    [SerializeField] private AudioSource PlayerExplosionSF;
+
     //Bullet properties
     [SerializeField] private float shootCooldown;
     private float nextShootTime = 0f;
@@ -115,6 +120,7 @@ public class Player : MonoBehaviour
 
     private void Shoot()
     {
+        shootSF.Play();
         var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         bullet.GetComponent<Rigidbody2D>().velocity = bulletSpawnPoint.up * bulletFiringSpeed;
         nextShootTime = Time.time + shootCooldown;
@@ -130,12 +136,14 @@ public class Player : MonoBehaviour
 
     private void TakeDamage() //Modificar posteriormente para receber diferentes valores de dano.
     {
+        hitSF.Play();
         currentHealth--;
         healthBar.SetHealth(currentHealth);
         if (currentHealth <= 0)
         {
+            PlayerExplosionSF.Play();
             Debug.Log("Game Over");
-            Destroy(gameObject);
+            Destroy(gameObject, 0.4f);
         }
     }
     #endregion

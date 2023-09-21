@@ -11,6 +11,9 @@ public class AsteroidBehavior : MonoBehaviour
     public float asteroidLifeTime = 20f;
     public float asteroidSpeed;
     public int asteroidReward;
+    public AudioSource hitSF;
+    public AudioSource explosionSF;
+    public AudioSource shieldCollisionSF;
 
     public GameObject[] wreckedAsteroids;
     public float wreckedAsteroidSpeed = 5f;
@@ -36,6 +39,7 @@ public class AsteroidBehavior : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Shield")){
             //Debug.Log("REDIRECIONADO");
+            shieldCollisionSF.Play();
             Redirection();
         }
     }
@@ -44,6 +48,7 @@ public class AsteroidBehavior : MonoBehaviour
     #region Take Damage
     public virtual void DealDamage()
     {
+        explosionSF.Play();
         asteroidLife--;
         if (asteroidLife <= 0)
         {

@@ -14,6 +14,7 @@ public class PlayerShield : MonoBehaviour
     public UIShieldController uiShield;
     [SerializeField] private bool shieldIsOn = false;
     [SerializeField] private bool isRecharging = false;
+    [SerializeField] private AudioSource activateSF;
 
 
     // Start is called before the first frame update
@@ -43,6 +44,7 @@ public class PlayerShield : MonoBehaviour
 
     public IEnumerator ShieldOn()
     {
+        activateSF.Play();
         shieldIsOn = true;
         shieldsLeft--;
         //Debug.Log("Escuto ativado");
