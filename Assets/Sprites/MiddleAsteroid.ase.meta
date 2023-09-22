@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1f32dbc77a7806346ac2db1667363cd9
+guid: ee433853202a27d4ba91e1432219bf99
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -35,7 +35,7 @@ ScriptedImporter:
     spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 32
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638309200322713633
+  platformSettingsDirtyTick: 638309320651351636
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: nave_placeholder
+  - name: MiddleAsteroid
     originalName: 
-    pivot: {x: 0.516129, y: 0.40909094}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 31
-      height: 22
-    spriteID: 3fc694e7b22847a4581a2ff5b2a497b3
+      width: 60
+      height: 60
+    spriteID: 6c4c4be15b700874aa85ee8058f57078
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -142,20 +142,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 187495880
-    name: nave_placeholder
+    guid: 867648806
+    name: MiddleAsteroid
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: nave_placeholder
+    - name: MiddleAsteroid
       frameIndex: 0
       cellRect:
-        x: 0
-        y: 7
-        width: 31
-        height: 22
-      spriteId: 3fc694e7b22847a4581a2ff5b2a497b3
+        x: 2
+        y: 2
+        width: 60
+        height: 60
+      spriteId: 6c4c4be15b700874aa85ee8058f57078
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -209,4 +209,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 32, y: 32}
+  canvasSize: {x: 64, y: 64}

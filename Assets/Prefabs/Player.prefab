@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4864447398565886458, guid: 1f32dbc77a7806346ac2db1667363cd9, type: 3}
+  m_Sprite: {fileID: -815842900013790365, guid: 7ef3dcfea34494844b0217bd359ddc6e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -125,8 +125,8 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.516129, y: 0.40909094}
-    oldSize: {x: 0.31, y: 0.22}
+    pivot: {x: 0.5, y: 0.31578946}
+    oldSize: {x: 0.875, y: 0.59375}
     newSize: {x: 0.31, y: 0.22}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   uiScore: {fileID: 0}
   impulseBar: {fileID: 0}
-  pScore: 6640
+  pScore: 8570
   shootSF: {fileID: -8964070501136766111}
   hitSF: {fileID: 9003843980654573628}
   PlayerExplosionSF: {fileID: 5357324288570685867}
