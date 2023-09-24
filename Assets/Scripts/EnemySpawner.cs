@@ -8,9 +8,11 @@ public class EnemySpawner : MonoBehaviour
     //Para mudar o raio em que os inimigos spawnam tem que mexer no radius do collider 2d!!
     [SerializeField] private float spawnRate;
     [SerializeField] private int enemyWaveType; //Trocar para um Enum futuramente. (1, 2, 3)
-    [SerializeField] private GameObject enemyPrefab1;// Asteroides pequenos
-    [SerializeField] private GameObject[] enemysPrefab2;// Asteroides pequenos e médios
-    [SerializeField] private GameObject[] enemysPrefab3;// Asteroides pequenos, médios e grandes
+    [SerializeField] private GameObject levelOne;// Asteroides pequenos
+    [SerializeField] private GameObject levelTwo;// Asteroides medios
+    [SerializeField] private GameObject[] levelThree;// Asteroides pequenos e médios
+    [SerializeField] private GameObject levelFour;// Asteroides grandes
+    [SerializeField] private GameObject[] levelFive;// Asteroides pequenos, médios e grandes
 
     [SerializeField] private bool canSpawn = true;
 
@@ -43,23 +45,41 @@ public class EnemySpawner : MonoBehaviour
         #endregion
         
         //Define aleatoriamente qual inimigo spawnar daquela lista de inimigos.
-        int rand2 = Random.Range(0, enemysPrefab2.Length);
-        int rand3 = Random.Range(0, enemysPrefab3.Length);
+        int rand3 = Random.Range(0, levelThree.Length);
+        int rand5 = Random.Range(0, levelFive.Length);
 
         if (enemyWaveType == 1)
         {
-            GameObject enemy = Instantiate(enemyPrefab1, spawnPosition, Quaternion.identity);
+            //spawnRate = 0.5f;
+            GameObject enemy = Instantiate(levelOne, spawnPosition, Quaternion.identity);
             EnemyDirectionOnSpawn(enemy);
         }
-                   
-        else if (enemyWaveType == 2)
+
+        if (enemyWaveType == 2)
         {
-            GameObject enemy = Instantiate(enemysPrefab2[rand2], spawnPosition, Quaternion.identity);
+            //spawnRate = 0.5f;
+            GameObject enemy = Instantiate(levelTwo, spawnPosition, Quaternion.identity);
             EnemyDirectionOnSpawn(enemy);
         }
+
         else if (enemyWaveType == 3)
         {
-            GameObject enemy = Instantiate(enemysPrefab3[rand3], spawnPosition, Quaternion.identity);
+            //spawnRate = 0.5f;
+            GameObject enemy = Instantiate(levelThree[rand3], spawnPosition, Quaternion.identity);
+            EnemyDirectionOnSpawn(enemy);
+        }
+
+        if (enemyWaveType == 4)
+        {
+            //spawnRate = 0.5f;
+            GameObject enemy = Instantiate(levelFour, spawnPosition, Quaternion.identity);
+            EnemyDirectionOnSpawn(enemy);
+        }
+
+        else if (enemyWaveType == 5)
+        {
+            //spawnRate = 0.5f;
+            GameObject enemy = Instantiate(levelFive[rand5], spawnPosition, Quaternion.identity);
             EnemyDirectionOnSpawn(enemy);
         }
 

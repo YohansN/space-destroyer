@@ -175,8 +175,9 @@ MonoBehaviour:
   shieldCollisionSF: {fileID: 5507221040622621072}
   particleExplosion: {fileID: 4031830724213312907}
   wreckedAsteroids:
-  - {fileID: 3354712562229567777, guid: 819fda14868526c4c83c566bec6bde36, type: 3}
-  - {fileID: 3354712562229567777, guid: 819fda14868526c4c83c566bec6bde36, type: 3}
+  - {fileID: 2319941950512031309, guid: 6a8225ff96d3dd94287d108425b8fe81, type: 3}
+  - {fileID: 2319941950512031309, guid: 6a8225ff96d3dd94287d108425b8fe81, type: 3}
+  - {fileID: 2319941950512031309, guid: 6a8225ff96d3dd94287d108425b8fe81, type: 3}
   wreckedAsteroidSpeed: 5
   playerInfo: {fileID: -6994880551708947270, guid: b07c5d5e70711b84fbbcaf91edbfe289, type: 3}
 --- !u!82 &-6743366495240506722
