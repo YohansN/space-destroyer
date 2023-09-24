@@ -17,7 +17,12 @@ public class Player : MonoBehaviour
     [SerializeField] public float decreaseImpulseVariantValue;
     [SerializeField] private float impulseSpeed;
     private bool impulseIsOn = false;
+
     [SerializeField] private Rigidbody2D rig;
+    private SpriteRenderer spriteRenderer;
+
+
+    //UI
     [SerializeField] private UIHealthController healthBar;
     [SerializeField] private UIScoreController uiScore;
     [SerializeField] private UIImpulseController impulseBar;
@@ -47,6 +52,7 @@ public class Player : MonoBehaviour
         impulseBar.SetMaxImpulse(maxImpulse);
         pScore = initialScore;
         rig = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -138,6 +144,7 @@ public class Player : MonoBehaviour
     {
         hitSF.Play();
         currentHealth--;
+        StartCoroutine(DamageIndicator());
         healthBar.SetHealth(currentHealth);
         if (currentHealth <= 0)
         {
@@ -145,6 +152,16 @@ public class Player : MonoBehaviour
             Debug.Log("Game Over");
             Destroy(gameObject, 0.4f);
         }
+    }
+
+    private IEnumerator DamageIndicator()
+    {
+        var blinkDuration = 0.1f;
+        var originalColor = spriteRenderer.color;
+        
+        spriteRenderer.color = Color.gray;
+        yield return new WaitForSeconds(blinkDuration);
+        spriteRenderer.color = originalColor;
     }
     #endregion
 

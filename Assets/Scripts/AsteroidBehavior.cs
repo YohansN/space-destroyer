@@ -15,6 +15,8 @@ public class AsteroidBehavior : MonoBehaviour
     public AudioSource explosionSF;
     public AudioSource shieldCollisionSF;
     public ParticleSystem particleExplosion;
+    private SpriteRenderer spriteRenderer;
+    private Collider2D collider;
 
     public GameObject[] wreckedAsteroids;
     public float wreckedAsteroidSpeed = 5f;
@@ -22,6 +24,12 @@ public class AsteroidBehavior : MonoBehaviour
     public Player playerInfo;
 
     #endregion
+
+    public void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        collider = GetComponent<Collider2D>();
+    }
 
     public void Awake()
     {  
@@ -50,6 +58,7 @@ public class AsteroidBehavior : MonoBehaviour
     public virtual void DealDamage()
     {
         asteroidLife--;
+        StartCoroutine(DamageIndicator());
         if (asteroidLife <= 0)
         {
             ScoreReward(asteroidReward); //Chama método de recompensa -> Adiciona pontos para o player.
@@ -62,14 +71,21 @@ public class AsteroidBehavior : MonoBehaviour
 
     public void BeforeDestroy()
     {
-        var spriteRenderer = GetComponent<SpriteRenderer>();
-        var collider = GetComponent<Collider2D>();
-
         spriteRenderer.enabled = false;
         collider.enabled = false;
 
         explosionSF.Play();
         particleExplosion.Play();
+    }
+
+    private IEnumerator DamageIndicator()
+    {
+        var blinkDuration = 0.1f;
+        var originalColor = spriteRenderer.color;
+
+        spriteRenderer.color = Color.gray;
+        yield return new WaitForSeconds(blinkDuration);
+        spriteRenderer.color = originalColor;
     }
 
     #endregion
