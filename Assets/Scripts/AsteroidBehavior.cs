@@ -14,6 +14,7 @@ public class AsteroidBehavior : MonoBehaviour
     public AudioSource hitSF;
     public AudioSource explosionSF;
     public AudioSource shieldCollisionSF;
+    public ParticleSystem particleExplosion;
 
     public GameObject[] wreckedAsteroids;
     public float wreckedAsteroidSpeed = 5f;
@@ -27,7 +28,7 @@ public class AsteroidBehavior : MonoBehaviour
         Destroy(gameObject, asteroidLifeTime);
     }
 
-
+   
     #region Behave On Collisions
     void OnCollisionEnter2D(Collision2D collision)
     {
@@ -48,15 +49,29 @@ public class AsteroidBehavior : MonoBehaviour
     #region Take Damage
     public virtual void DealDamage()
     {
-        explosionSF.Play();
         asteroidLife--;
         if (asteroidLife <= 0)
         {
             ScoreReward(asteroidReward); //Chama método de recompensa -> Adiciona pontos para o player.
-            Destroy(gameObject);
-            //SpawnChildAsteroids();
+            BeforeDestroy();
+            Destroy(gameObject, 0.5f);
+            SpawnChildAsteroids();
         }
+        hitSF.Play();
     }
+
+    public void BeforeDestroy()
+    {
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        var collider = GetComponent<Collider2D>();
+
+        spriteRenderer.enabled = false;
+        collider.enabled = false;
+
+        explosionSF.Play();
+        particleExplosion.Play();
+    }
+
     #endregion
 
     public void Redirection()

@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class WrekedAsteroid : MonoBehaviour
 {
-    public float wreckedAsteroidLife = 1;
-    public float wreckedAsteroidLifeTime = 20f;
-    public Player playerInfo;
-    public int asteroidReward;
-    public AudioSource explosionSF;
-    public AudioSource shieldCollisionSF;
+    [SerializeField] private float wreckedAsteroidLife = 1;
+    [SerializeField] private float wreckedAsteroidLifeTime = 20f;
+    [SerializeField] private Player playerInfo;
+    [SerializeField] private int asteroidReward;
+    [SerializeField] private AudioSource explosionSF;
+    [SerializeField] private AudioSource shieldCollisionSF;
+    [SerializeField] private ParticleSystem particleExplosion;
 
     private void Awake()
     {
         Destroy(gameObject, wreckedAsteroidLifeTime);
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Bullets") || collision.gameObject.CompareTag("Player")) 
             DealDamage();
@@ -28,23 +29,35 @@ public class WrekedAsteroid : MonoBehaviour
             Redirection();
         }
     }
-    public void Redirection()
+    private void Redirection()
     {
         GetComponent<Rigidbody2D>().velocity *= -3;
     }
 
-    public virtual void DealDamage()
+    private void DealDamage()
     {
-        explosionSF.Play();
         wreckedAsteroidLife--;
         if (wreckedAsteroidLife <= 0)
         {
             ScoreReward(this.asteroidReward);
-            Destroy(gameObject, 0.2f);
+            BeforeDestroy();
+            Destroy(gameObject, 0.5f);
         }
     }
 
-    public void ScoreReward(int score)
+    private void BeforeDestroy()
+    {
+        var spriteRenderer = GetComponent<SpriteRenderer>();
+        var collider = GetComponent<Collider2D>();
+
+        spriteRenderer.enabled = false;
+        collider.enabled = false;
+
+        explosionSF.Play();
+        particleExplosion.Play();
+    }
+
+    private void ScoreReward(int score)
     {
         playerInfo.SetScore(score);
     }
