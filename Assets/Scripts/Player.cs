@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     [SerializeField] public float decreaseImpulseVariantValue;
     [SerializeField] private float impulseSpeed;
     private bool impulseIsOn = false;
+    private bool isImmune = false;
 
     [SerializeField] private Rigidbody2D rig;
     private SpriteRenderer spriteRenderer;
@@ -142,16 +143,28 @@ public class Player : MonoBehaviour
 
     private void TakeDamage() //Modificar posteriormente para receber diferentes valores de dano.
     {
-        hitSF.Play();
-        currentHealth--;
-        StartCoroutine(DamageIndicator());
-        healthBar.SetHealth(currentHealth);
-        if (currentHealth <= 0)
+        if (!isImmune)
         {
-            PlayerExplosionSF.Play();
-            Debug.Log("Game Over");
-            Destroy(gameObject, 0.4f);
+            hitSF.Play();
+            currentHealth--;
+            StartCoroutine(DamageIndicator());
+            StartCoroutine(ImmunityTime());
+            healthBar.SetHealth(currentHealth);
+            if (currentHealth <= 0)
+            {
+                PlayerExplosionSF.Play();
+                Debug.Log("Game Over");
+                Destroy(gameObject, 0.4f);
+            }
         }
+    }
+
+    private IEnumerator ImmunityTime()
+    {
+        isImmune = true;
+        float immuneTime = 0.5f;
+        yield return new WaitForSeconds(immuneTime);
+        isImmune = false;
     }
 
     private IEnumerator DamageIndicator()
