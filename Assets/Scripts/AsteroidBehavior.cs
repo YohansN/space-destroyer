@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using EZCameraShake;
 
 public class AsteroidBehavior : MonoBehaviour
 {
@@ -71,6 +72,7 @@ public class AsteroidBehavior : MonoBehaviour
 
     public void BeforeDestroy()
     {
+        CameraShaker.Instance.ShakeOnce(5f, 20f, .1f, 1f);
         spriteRenderer.enabled = false;
         collider.enabled = false;
 

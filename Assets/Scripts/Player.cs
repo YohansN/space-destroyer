@@ -158,7 +158,7 @@ public class Player : MonoBehaviour
     private IEnumerator ImmunityTime()
     {
         isImmune = true;
-        float immuneTime = 0.5f;
+        float immuneTime = 1f;
         yield return new WaitForSeconds(immuneTime);
         isImmune = false;
     }
@@ -167,7 +167,7 @@ public class Player : MonoBehaviour
     {
         var blinkDuration = 0.1f;
         var originalColor = spriteRenderer.color;
-        
+
         spriteRenderer.color = Color.gray;
         yield return new WaitForSeconds(blinkDuration);
         spriteRenderer.color = originalColor;
