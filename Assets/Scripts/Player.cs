@@ -28,9 +28,6 @@ public class Player : MonoBehaviour
     [SerializeField] private UIScoreController uiScore;
     [SerializeField] private UIImpulseController impulseBar;
 
-    private int initialScore = 0;
-    [SerializeField] public int pScore;
-
     //Sound Effects
     [SerializeField] private AudioSource shootSF;
     [SerializeField] private AudioSource hitSF;
@@ -51,7 +48,6 @@ public class Player : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
         currentImpulse = maxImpulse;
         impulseBar.SetMaxImpulse(maxImpulse);
-        pScore = initialScore;
         rig = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -175,14 +171,6 @@ public class Player : MonoBehaviour
         spriteRenderer.color = Color.gray;
         yield return new WaitForSeconds(blinkDuration);
         spriteRenderer.color = originalColor;
-    }
-    #endregion
-
-    #region Score
-    public void SetScore(int score)
-    {
-        this.pScore += score;
-        //uiScore.SetScorePoints(this.score);
     }
     #endregion
 

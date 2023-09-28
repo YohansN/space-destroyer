@@ -7,15 +7,21 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class UIScoreController : MonoBehaviour
 {
-    public Player playerInfo;
-
-    #region Score
     public TMP_Text scoreText;
+    private int totalScore = 0;
+
+    private void Start()
+    {
+        GameEvents.current.onPlayerScoredTrigger += OnPlayerScored;
+    }
+
+    private void OnPlayerScored(int score) //Logica do evento
+    {
+        totalScore += score;
+    }
 
     private void Update()
     {
-        //Debug.Log("pontuação: "+ playerInfo.pScore);
-        scoreText.text = "SCORE: " + playerInfo.pScore.ToString();
+        scoreText.text = "SCORE: " + totalScore.ToString();
     }
-    #endregion
 }

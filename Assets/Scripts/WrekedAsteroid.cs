@@ -59,6 +59,6 @@ public class WrekedAsteroid : MonoBehaviour
 
     private void ScoreReward(int score)
     {
-        playerInfo.SetScore(score);
+        //playerInfo.SetScore(score);
     }
 }

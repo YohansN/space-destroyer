@@ -97,7 +97,7 @@ public class AsteroidBehavior : MonoBehaviour
 
     public virtual void ScoreReward(int score)
     {
-        playerInfo.SetScore(score);
+        GameEvents.current.PlayerScoredTrigger(score);
     }
 
     public void SpawnChildAsteroids()

@@ -78,9 +78,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_Sprite: {fileID: -815842900013790365, guid: 7ef3dcfea34494844b0217bd359ddc6e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8784314, g: 0.16078432, b: 0.7647059, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -134,14 +134,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.03, y: 0.12999998}
-      - {x: -0.16, y: -0.010000009}
-      - {x: -0.16, y: -0.07000001}
-      - {x: -0.13, y: -0.09000001}
-      - {x: 0.089999996, y: -0.09000001}
-      - {x: 0.14999999, y: -0.080000006}
-      - {x: 0.14999999, y: 0.00999999}
-      - {x: 0.06, y: 0.12999998}
+    - - {x: -0.035275392, y: 0.40432042}
+      - {x: -0.44223356, y: -0.09440631}
+      - {x: -0.43432048, y: -0.18078327}
+      - {x: -0.09043454, y: -0.12692775}
+      - {x: 0.092637695, y: -0.12429006}
+      - {x: 0.45069742, y: -0.20133406}
+      - {x: 0.43750894, y: -0.10078327}
+      - {x: 0.036260728, y: 0.40695816}
   m_UseDelaunayMesh: 0
 --- !u!50 &-1477225647614948345
 Rigidbody2D:
@@ -194,7 +194,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   uiScore: {fileID: 0}
   impulseBar: {fileID: 0}
-  pScore: 8570
+  pScore: 149770
   shootSF: {fileID: -8964070501136766111}
   hitSF: {fileID: 9003843980654573628}
   PlayerExplosionSF: {fileID: 5357324288570685867}
