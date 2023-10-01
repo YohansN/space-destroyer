@@ -23,6 +23,7 @@ public class AsteroidBehavior : MonoBehaviour
     public float wreckedAsteroidSpeed = 5f;
 
     public Player playerInfo;
+    public GameObject floatingPoints;
 
     #endregion
 
@@ -73,6 +74,11 @@ public class AsteroidBehavior : MonoBehaviour
     public void BeforeDestroy()
     {
         CameraShaker.Instance.ShakeOnce(5f, 20f, .1f, 1f);
+        
+        //Mostrando pontos na tela na destruição do asteroide.
+        GameObject points = Instantiate(floatingPoints, transform.position, Quaternion.identity) as GameObject;
+        points.transform.GetChild(0).GetComponent<TextMeshPro>().text = "+" + asteroidReward;
+        
         spriteRenderer.enabled = false;
         collider.enabled = false;
 

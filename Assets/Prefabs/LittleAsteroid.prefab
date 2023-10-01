@@ -177,6 +177,7 @@ MonoBehaviour:
   wreckedAsteroids: []
   wreckedAsteroidSpeed: 0
   playerInfo: {fileID: -6994880551708947270, guid: b07c5d5e70711b84fbbcaf91edbfe289, type: 3}
+  floatingPoints: {fileID: 4424490565394338140, guid: aea2d276428ff30448f0f2be47d1c811, type: 3}
 --- !u!82 &5896144668380963123
 AudioSource:
   m_ObjectHideFlags: 0
