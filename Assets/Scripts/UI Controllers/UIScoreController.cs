@@ -8,7 +8,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class UIScoreController : MonoBehaviour
 {
     public TMP_Text scoreText;
-    private int currentScore = 0;
+    public int currentScore = 0;
     private int currentXp = 0;
     private int maxXp = 10000;
     public Slider xpSlider;

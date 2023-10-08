@@ -21,7 +21,10 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Rigidbody2D rig;
     private SpriteRenderer spriteRenderer;
+    private Collider2D collider;
 
+    //GameLoop
+    [SerializeField] private SceneController sceneController;
 
     //UI
     [SerializeField] private UIHealthController healthBar;
@@ -50,6 +53,7 @@ public class Player : MonoBehaviour
         impulseBar.SetMaxImpulse(maxImpulse);
         rig = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        collider = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -148,11 +152,19 @@ public class Player : MonoBehaviour
             healthBar.SetHealth(currentHealth);
             if (currentHealth <= 0)
             {
-                PlayerExplosionSF.Play();
-                Debug.Log("Game Over");
-                Destroy(gameObject, 0.4f);
+                BeforeDestroy();
+                Destroy(gameObject, 0.5f);
             }
         }
+    }
+
+    private void BeforeDestroy()
+    {
+        PlayerExplosionSF.Play();
+        Debug.Log("Game Over");
+        spriteRenderer.enabled = false;
+        collider.enabled = false;
+        sceneController.GameOverScreen();
     }
 
     private IEnumerator ImmunityTime()
