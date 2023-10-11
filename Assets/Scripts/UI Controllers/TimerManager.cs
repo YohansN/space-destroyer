@@ -10,6 +10,7 @@ public class TimerManager : MonoBehaviour
     [SerializeField] private int seconds;
     private TMP_Text timerText;
     private float currentTime;
+    private bool hasBeenCalled = false;
     
     // Start is called before the first frame update
     void Start()
@@ -37,9 +38,13 @@ public class TimerManager : MonoBehaviour
         }
         else
         {
-            //Fim da wave -> Chama o evento para trocar de fase/cena.
+            //Fim da wave
             timerText.text = "00:00";
-            Debug.Log("Passou de fase!");
+            if(hasBeenCalled == false)
+            {
+                hasBeenCalled = true;
+                GameEvents.current.TimerFinishedTrigger(); //Evento que faz o jogo trocar de fase/cena
+            }
         }
     }
 }

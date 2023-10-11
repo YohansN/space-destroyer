@@ -21,4 +21,13 @@ public class GameEvents : MonoBehaviour
             onPlayerScoredTrigger(score);
     }
     #endregion
+
+    #region Next Level Loader Event
+    public event Action onTimerFinishedTrigger;
+    public void TimerFinishedTrigger()
+    {
+        if(onTimerFinishedTrigger != null)
+            onTimerFinishedTrigger();
+    }
+    #endregion
 }

@@ -12,6 +12,7 @@ public class SceneController : MonoBehaviour
     private void Awake()
     {
         gameOverUI.SetActive(false);
+        GameEvents.current.onTimerFinishedTrigger += LoadNextLevel;
     }
     public void GameOverScreen()
     {
@@ -23,11 +24,19 @@ public class SceneController : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(0);
     }
 
-    //private void LoadNextLevel()
-    //{
-    //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-    //}
+    private void LoadNextLevel()
+    {
+        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+    }
+
+    private IEnumerator LoadLevel(int levelIndex)
+    {
+        Debug.Log($"Fase: {levelIndex}");
+        yield return new WaitForSeconds(1f);
+        //Chamar transição de fase aqui
+        SceneManager.LoadSceneAsync(levelIndex);
+    }
 }
