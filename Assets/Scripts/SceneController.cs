@@ -9,8 +9,20 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private UIScoreController UIScore;
+
+    #region Passing status variables between scenes
+    private UIScoreController scoreAndXp;
+    private Player player;
+    private PlayerShield shield;
+    #endregion
+
     private void Awake()
     {
+        scoreAndXp = FindAnyObjectByType<UIScoreController>();
+        player = FindAnyObjectByType<Player>();
+        shield = FindAnyObjectByType<PlayerShield>();
+        LoadDataState();
+
         gameOverUI.SetActive(false);
         GameEvents.current.onTimerFinishedTrigger += LoadNextLevel;
     }
@@ -29,6 +41,7 @@ public class SceneController : MonoBehaviour
 
     private void LoadNextLevel()
     {
+        SavingDataState();
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
@@ -38,5 +51,40 @@ public class SceneController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         //Chamar transição de fase aqui
         SceneManager.LoadSceneAsync(levelIndex);
+    }
+
+    private void SavingDataState()
+    {
+        //Salva os dados de status que serão passados pra proxima fase
+        StatusDataController.currentHealth = player.currentHealth;
+        StatusDataController.shootCooldown = player.shootCooldown;
+        StatusDataController.maxImpulse = player.maxImpulse;
+        StatusDataController.increaseImpulse = player.increaseImpulseVariantValue;
+        StatusDataController.decreaseImpulse = player.decreaseImpulseVariantValue;
+
+        StatusDataController.currentScore = scoreAndXp.currentScore;
+        StatusDataController.currentXp = scoreAndXp.currentXp;
+
+        StatusDataController.shieldActiveTime = shield.shieldActiveTime;
+        StatusDataController.shieldRechargeTime = shield.shieldRechargeTime;
+    }
+
+    private void LoadDataState()
+    {
+        if(SceneManager.GetActiveScene().buildIndex > 0)
+        {
+            //Quando a fase começa os status salvos são carregados aqui.
+            player.currentHealth = StatusDataController.currentHealth;
+            player.shootCooldown = StatusDataController.shootCooldown;
+            player.maxImpulse = StatusDataController.maxImpulse;
+            player.increaseImpulseVariantValue = StatusDataController.increaseImpulse;
+            player.decreaseImpulseVariantValue = StatusDataController.decreaseImpulse;
+
+            scoreAndXp.currentScore = StatusDataController.currentScore;
+            scoreAndXp.currentXp = StatusDataController.currentXp;
+
+            shield.shieldActiveTime = StatusDataController.shieldActiveTime;
+            shield.shieldRechargeTime = StatusDataController.shieldRechargeTime;
+        }
     }
 }

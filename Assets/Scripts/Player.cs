@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
 {
     #region Properties
     [SerializeField] private int maxHealth = 10;
-    [SerializeField] private int currentHealth;
+    [SerializeField] public int currentHealth = 10;
     [SerializeField] private float rotationalSpeed;
     [SerializeField] public float maxImpulse;
     [SerializeField] public float currentImpulse;
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioSource PlayerExplosionSF;
 
     //Bullet properties
-    [SerializeField] private float shootCooldown;
+    [SerializeField] public float shootCooldown;
     private float nextShootTime = 0f;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletFiringSpeed;
@@ -47,8 +47,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        //currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth, currentHealth);
         currentImpulse = maxImpulse;
         impulseBar.SetMaxImpulse(maxImpulse);
         rig = GetComponent<Rigidbody2D>();

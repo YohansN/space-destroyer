@@ -11,10 +11,10 @@ public class UIHealthController : MonoBehaviour
     //Health Bar
     public Slider healthSlider;
 
-    public void SetMaxHealth(int health)
+    public void SetMaxHealth(int maxHealth, int currentHealth)
     {
-        healthSlider.maxValue = health;
-        healthSlider.value = health;
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = currentHealth;
     }
 
     public void SetHealth(float health)

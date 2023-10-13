@@ -439,10 +439,6 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -6994880551708947270, guid: b07c5d5e70711b84fbbcaf91edbfe289, type: 3}
-      propertyPath: currentHealth
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: -6994880551708947270, guid: b07c5d5e70711b84fbbcaf91edbfe289, type: 3}
       propertyPath: shootCooldown
       value: 0.4
       objectReference: {fileID: 0}
@@ -1727,8 +1723,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc250c530b5df4489248356abb1e460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minutes: 0
-  seconds: 10
+  minutes: 2
+  seconds: 0
 --- !u!114 &859063736
 MonoBehaviour:
   m_ObjectHideFlags: 0

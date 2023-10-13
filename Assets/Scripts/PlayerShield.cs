@@ -6,8 +6,8 @@ using UnityEngine.U2D;
 public class PlayerShield : MonoBehaviour
 {
     [SerializeField] private bool isShieldActive = true;
-    [SerializeField] private float shieldActiveTime = 3f;
-    [SerializeField] private float shieldRechargeTime = 10f;
+    [SerializeField] public float shieldActiveTime = 3f;
+    [SerializeField] public float shieldRechargeTime = 10f;
     [SerializeField] private Collider2D shieldCollider;
     [SerializeField] private SpriteRenderer shieldSprite;
     [SerializeField] private int shieldsLeft;
@@ -16,7 +16,7 @@ public class PlayerShield : MonoBehaviour
     [SerializeField] private bool isRecharging = false;
     [SerializeField] private AudioSource activateSF;
 
-
+  
     // Start is called before the first frame update
     void Start()
     {

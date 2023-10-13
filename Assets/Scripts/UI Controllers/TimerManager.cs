@@ -11,7 +11,7 @@ public class TimerManager : MonoBehaviour
     private TMP_Text timerText;
     private float currentTime;
     private bool hasBeenCalled = false;
-    
+
     // Start is called before the first frame update
     void Start()
     {
