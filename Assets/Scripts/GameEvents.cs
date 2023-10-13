@@ -30,4 +30,13 @@ public class GameEvents : MonoBehaviour
             onTimerFinishedTrigger();
     }
     #endregion
+
+    #region Player's Death
+    public event Action onPlayerDeathTrigger;
+    public void PlayerDeathTrigger()
+    {
+        if (onPlayerDeathTrigger != null)
+            onPlayerDeathTrigger();
+    }
+    #endregion
 }

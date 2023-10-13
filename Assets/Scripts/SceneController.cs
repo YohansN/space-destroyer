@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
@@ -9,6 +10,8 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private UIScoreController UIScore;
+    [SerializeField] private PlayableDirector deathCutscene;
+    [SerializeField] private GameObject cutsceneContainer;
 
     #region Passing status variables between scenes
     private UIScoreController scoreAndXp;
@@ -23,13 +26,28 @@ public class SceneController : MonoBehaviour
         shield = FindAnyObjectByType<PlayerShield>();
         LoadDataState();
 
+        cutsceneContainer.SetActive(false);
+
         gameOverUI.SetActive(false);
         GameEvents.current.onTimerFinishedTrigger += LoadNextLevel;
+        GameEvents.current.onPlayerDeathTrigger += DeathScreens;
     }
-    public void GameOverScreen()
+    private void DeathScreens()
+    {
+        PlayGameOverCutscene();
+        Invoke("GameOverScreen", 1.5f);
+    }
+
+    private void PlayGameOverCutscene()
+    {
+        cutsceneContainer.SetActive(true);
+        deathCutscene.Play();
+    }
+
+    private void GameOverScreen()
     {
         Time.timeScale = 0;
-        scoreText.text = "TOTAL SCORED: "+ UIScore.currentScore.ToString();
+        scoreText.text = "TOTAL SCORED: " + UIScore.currentScore.ToString();
         gameOverUI.SetActive(true);
     }
 

@@ -153,6 +153,7 @@ public class Player : MonoBehaviour
             if (currentHealth <= 0)
             {
                 BeforeDestroy();
+                GameEvents.current.PlayerDeathTrigger();
                 Destroy(gameObject, 0.5f);
             }
         }
@@ -160,11 +161,9 @@ public class Player : MonoBehaviour
 
     private void BeforeDestroy()
     {
-        PlayerExplosionSF.Play();
         Debug.Log("Game Over");
         spriteRenderer.enabled = false;
         collider.enabled = false;
-        sceneController.GameOverScreen();
     }
 
     private IEnumerator ImmunityTime()
