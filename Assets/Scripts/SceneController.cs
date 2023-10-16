@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private UIScoreController UIScore;
     [SerializeField] private PlayableDirector deathCutscene;
@@ -27,8 +28,10 @@ public class SceneController : MonoBehaviour
         LoadDataState();
 
         cutsceneContainer.SetActive(false);
-
         gameOverUI.SetActive(false);
+        pauseMenuUI.SetActive(false);
+
+        GameEvents.current.onPlayerPauseTrigger += PauseScreen;
         GameEvents.current.onTimerFinishedTrigger += LoadNextLevel;
         GameEvents.current.onPlayerDeathTrigger += DeathScreens;
     }
@@ -51,11 +54,31 @@ public class SceneController : MonoBehaviour
         gameOverUI.SetActive(true);
     }
 
+    #region Pause Screen Options
+    private void PauseScreen()
+    {
+        Time.timeScale = 0;
+        pauseMenuUI.SetActive(true);
+    }
+    //Opções do Menu de pausa:
+    public void ResumeGame()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void MainMenu()
+    {
+        //Adicionar Scene de menu posteriormente
+        //SceneManager.LoadScene(0);
+    }
+
     public void RestartGame()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
+    #endregion
 
     private void LoadNextLevel()
     {

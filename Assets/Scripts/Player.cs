@@ -100,6 +100,8 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space) && Time.time >= nextShootTime)
             Shoot();
+        if (Input.GetKey(KeyCode.Escape))
+            GameEvents.current.PlayerPauseTrigger();
     }
 
     #region Impulse

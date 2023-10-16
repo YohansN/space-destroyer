@@ -39,4 +39,13 @@ public class GameEvents : MonoBehaviour
             onPlayerDeathTrigger();
     }
     #endregion
+
+    #region Game Paused
+    public event Action onPlayerPauseTrigger;
+    public void PlayerPauseTrigger()
+    {
+        if (onPlayerPauseTrigger != null)
+            onPlayerPauseTrigger();
+    }
+    #endregion
 }
