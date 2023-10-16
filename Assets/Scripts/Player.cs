@@ -149,7 +149,7 @@ public class Player : MonoBehaviour
             currentHealth--;
             StartCoroutine(DamageIndicator());
             StartCoroutine(ImmunityTime());
-            healthBar.SetHealth(currentHealth);
+            healthBar.SetHealth(currentHealth, maxHealth);
             if (currentHealth <= 0)
             {
                 BeforeDestroy();
