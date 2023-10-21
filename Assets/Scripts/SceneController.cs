@@ -10,6 +10,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;
     [SerializeField] private GameObject pauseMenuUI;
     [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text recordScoreText;
     [SerializeField] private UIScoreController UIScore;
     [SerializeField] private PlayableDirector deathCutscene;
     [SerializeField] private GameObject cutsceneContainer;
@@ -49,8 +50,13 @@ public class SceneController : MonoBehaviour
 
     private void GameOverScreen()
     {
+        bool isNewRecord = UIScore.SetNewRecord();
         Time.timeScale = 0;
         scoreText.text = "TOTAL SCORED: " + UIScore.currentScore.ToString();
+        if (isNewRecord)
+            recordScoreText.text = "NEW RECORD: " + PlayerPrefs.GetInt("record").ToString() + "!";
+        else
+            recordScoreText.text = "RECORD: " + PlayerPrefs.GetInt("record").ToString();
         gameOverUI.SetActive(true);
     }
 

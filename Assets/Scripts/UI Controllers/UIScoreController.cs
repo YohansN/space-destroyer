@@ -12,6 +12,12 @@ public class UIScoreController : MonoBehaviour
     public int currentXp = 0;
     private int maxXp = 10000;
     public Slider xpSlider;
+    private int recordScore;
+
+    private void Awake()
+    {
+        recordScore = PlayerPrefs.GetInt("record");    
+    }
 
     private void Start()
     {
@@ -52,5 +58,16 @@ public class UIScoreController : MonoBehaviour
     private void Update()
     {
         scoreText.text = "SCORE: " + currentScore.ToString();
+    }
+
+    public bool SetNewRecord()
+    {
+        if(currentScore > recordScore)
+        {
+            recordScore = currentScore;
+            PlayerPrefs.SetInt("record", this.recordScore);
+            return true;
+        }
+        return false;
     }
 }
