@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SocialPlatforms.Impl;
+using static Cinemachine.DocumentationSortingAttribute;
 
 public class UIScoreController : MonoBehaviour
 {
     public TMP_Text scoreText;
+    [SerializeField] private TMP_Text XPLevelText;
+    private int XPLevel;
     public int currentScore = 0;
     public int currentXp = 0;
     private int maxXp = 10000;
@@ -16,11 +19,13 @@ public class UIScoreController : MonoBehaviour
 
     private void Awake()
     {
+        XPLevel = 0;
         recordScore = PlayerPrefs.GetInt("record");    
     }
 
     private void Start()
     {
+        XPLevelText.text = "Lvl. " + XPLevel.ToString();
         xpSlider.maxValue = maxXp;
         xpSlider.value = currentXp;
         GameEvents.current.onPlayerScoredTrigger += OnPlayerScored;
@@ -34,6 +39,7 @@ public class UIScoreController : MonoBehaviour
         if(currentXp > maxXp)
         {
             Debug.Log("LEVEL UP!");
+            XPLevel++;
             ResetMaxXp(maxXp + maxXp / 2); //Trocar essa formula par auma mais balanceada.
         }
         else
@@ -58,6 +64,7 @@ public class UIScoreController : MonoBehaviour
     private void Update()
     {
         scoreText.text = "SCORE: " + currentScore.ToString();
+        XPLevelText.text = "Lvl. " + XPLevel.ToString();
     }
 
     public bool SetNewRecord()
