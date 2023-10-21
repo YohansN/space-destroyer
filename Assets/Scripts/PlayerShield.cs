@@ -12,9 +12,10 @@ public class PlayerShield : MonoBehaviour
     [SerializeField] private SpriteRenderer shieldSprite;
     [SerializeField] private int shieldsLeft;
     public UIShieldController uiShield;
-    [SerializeField] private bool shieldIsOn = false;
+    private bool shieldIsOn = false;
     [SerializeField] private bool isRecharging = false;
     [SerializeField] private AudioSource activateSF;
+    [SerializeField] private AudioSource rechargedSF;
 
   
     // Start is called before the first frame update
@@ -64,5 +65,7 @@ public class PlayerShield : MonoBehaviour
         yield return new WaitForSeconds(shieldRechargeTime);
         shieldsLeft++;
         isRecharging = false;
+        rechargedSF.Play();
+        //Debug.Log("Tocar som de recarregado");
     }
 }
