@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,28 +7,44 @@ public class EnemySpawner : MonoBehaviour
 {
     //A medida que as fases forem passando o spawnRate deve ir diminuindo!
     //Para mudar o raio em que os inimigos spawnam tem que mexer no radius do collider 2d!!
-    [SerializeField] private float spawnRate;
+    private DifficultyController difficultyController;
+    [SerializeField] private float spawnRate = 1;
+    [SerializeField] private float spawnRateEasy = 4;
+    [SerializeField] private float spawnRateHard = 1;
+    private float spawnDelay;
     [SerializeField] private int enemyWaveType; //Trocar para um Enum futuramente. (1, 2, 3)
     [SerializeField] private GameObject levelOne;// Asteroides pequenos
     [SerializeField] private GameObject levelTwo;// Asteroides medios
     [SerializeField] private GameObject[] levelThree;// Asteroides pequenos e médios
     [SerializeField] private GameObject levelFour;// Asteroides grandes
     [SerializeField] private GameObject[] levelFive;// Asteroides pequenos, médios e grandes
-
+    
     [SerializeField] private bool canSpawn = true;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        StartCoroutine(Spawner());
+        spawnDelay = spawnRateEasy;
     }
 
-    private IEnumerator Spawner()
+    void Start()
     {
-        WaitForSeconds wait = new WaitForSeconds(spawnRate);
-        while (canSpawn)
+        difficultyController = FindObjectOfType<DifficultyController>();
+    }
+
+    private void Update()
+    {
+        spawnDelay -= Time.deltaTime;
+        if(spawnDelay < 0)
         {
-            yield return wait;
+            Spawner();
+            spawnDelay = Mathf.Lerp(spawnRateEasy, spawnRateHard, difficultyController.Difficulty);
+        }
+    }
+    
+    private void Spawner()
+    {
+        if (canSpawn)
+        {
             SpawnWave(enemyWaveType);
         }
     }
