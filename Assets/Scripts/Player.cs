@@ -44,6 +44,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform bulletSpawnPoint;
     #endregion
 
+    private bool isCallingFrontMove = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,14 +61,49 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        #region Player Movimentation
-        //Player rotation
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+            callFrontMove();
+        else
+        {
+            isCallingFrontMove = false;
+            impulseIsOn = false;
+            IncreaseImpulse();
+        }
+
+        if (Input.GetKey(KeyCode.Space) && Time.time >= nextShootTime)
+            Shoot();
+        if (Input.GetKey(KeyCode.Escape))
+            GameEvents.current.PlayerPauseTrigger();
+    }
+
+    private void FixedUpdate()
+    {
+        Rotation();
+        if (isCallingFrontMove)
+            FrontMove();
+    }
+
+    private void FrontMove()
+    {
+        if (currentImpulse > 0)
+        {
+            Vector2 forceDirection = transform.up;
+            rig.AddForce(forceDirection * impulseSpeed);
+            impulseIsOn = true;
+            DecreaseImpulse();
+        }
+    }
+
+    private void callFrontMove() => isCallingFrontMove = true;
+
+    private void Rotation()
+    {
         float horizontalMovement = -Input.GetAxis("Horizontal");
         transform.Rotate(0, 0, (horizontalMovement * rotationalSpeed * Time.deltaTime));
 
         float rotationAngle = transform.rotation.eulerAngles.z;
         float radianAngle = rotationAngle * Mathf.Deg2Rad;
-        //Debug.Log("Angulo de rotação: " + rotationAngle);
 
         //Math-magic -> Correct de start angle value of the player
         Vector2 direction = new Vector2(0f, 1f);
@@ -75,33 +112,6 @@ public class Player : MonoBehaviour
 
         direction = new Vector2(rotatedX, rotatedY);
         direction.Normalize();
-        //Debug.Log("Angulo de rotação: " + direction);
-
-        //Player front movimentation
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-        {
-            if(currentImpulse > 0)
-            {
-                Vector2 forceDirection = transform.up;
-                rig.AddForce(forceDirection * impulseSpeed);
-                impulseIsOn = true;
-                DecreaseImpulse();
-            }
-            
-        }
-        else
-        {
-            impulseIsOn = false;
-            IncreaseImpulse();
-        }
-        
-
-        #endregion
-
-        if (Input.GetKey(KeyCode.Space) && Time.time >= nextShootTime)
-            Shoot();
-        if (Input.GetKey(KeyCode.Escape))
-            GameEvents.current.PlayerPauseTrigger();
     }
 
     #region Impulse
@@ -109,7 +119,6 @@ public class Player : MonoBehaviour
     {
         if ((currentImpulse > 0) && impulseIsOn)
         {
-            //Debug.Log("Diminuindo impulso");
             currentImpulse -= decreaseImpulseVariantValue * Time.deltaTime;
             impulseBar.SetImpulseBar(currentImpulse);
         }
@@ -119,7 +128,6 @@ public class Player : MonoBehaviour
     {
         if ((currentImpulse < maxImpulse) && !impulseIsOn)
         {
-            //Debug.Log("Aumentando impulso");
             currentImpulse += increaseImpulseVariantValue * Time.deltaTime;
             impulseBar.SetImpulseBar(currentImpulse);
         }
@@ -143,7 +151,7 @@ public class Player : MonoBehaviour
             TakeDamage();
     }
 
-    private void TakeDamage() //Modificar posteriormente para receber diferentes valores de dano.
+    private void TakeDamage()
     {
         if (!isImmune)
         {
