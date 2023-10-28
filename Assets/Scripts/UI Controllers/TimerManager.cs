@@ -11,12 +11,14 @@ public class TimerManager : MonoBehaviour
     private TMP_Text timerText;
     private float currentTime;
     private bool hasBeenCalled = false;
+    [SerializeField] private EnemySpawner enemySpawner;
 
     // Start is called before the first frame update
     void Start()
     {
         timerText = GetComponent<TMP_Text>();
         currentTime = minutes * 60 + seconds;
+
     }
 
     // Update is called once per frame
@@ -43,6 +45,7 @@ public class TimerManager : MonoBehaviour
             if(hasBeenCalled == false)
             {
                 hasBeenCalled = true;
+                enemySpawner.canSpawn = false;
                 GameEvents.current.TimerFinishedTrigger(); //Evento que faz o jogo trocar de fase/cena
             }
         }

@@ -1997,7 +1997,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c635c8764c16d9944a2c49396b3fe2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 1
   spawnRateEasy: 5
   spawnRateHard: 1
   enemyWaveType: 5
@@ -2850,8 +2849,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc250c530b5df4489248356abb1e460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minutes: 3
+  minutes: 2
   seconds: 0
+  enemySpawner: {fileID: 483534068}
 --- !u!114 &859063736
 MonoBehaviour:
   m_ObjectHideFlags: 0

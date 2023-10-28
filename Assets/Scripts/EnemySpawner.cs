@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
     //A medida que as fases forem passando o spawnRate deve ir diminuindo!
     //Para mudar o raio em que os inimigos spawnam tem que mexer no radius do collider 2d!!
     private DifficultyController difficultyController;
-    [SerializeField] private float spawnRate = 1;
+    //[SerializeField] private float spawnRate = 1;
     [SerializeField] private float spawnRateEasy = 4;
     [SerializeField] private float spawnRateHard = 1;
     private float spawnDelay;
@@ -19,7 +19,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject levelFour;// Asteroides grandes
     [SerializeField] private GameObject[] levelFive;// Asteroides pequenos, médios e grandes
     
-    [SerializeField] private bool canSpawn = true;
+    [SerializeField] public bool canSpawn = true;
 
     private void Awake()
     {
