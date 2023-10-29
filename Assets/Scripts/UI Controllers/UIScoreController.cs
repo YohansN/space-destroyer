@@ -13,7 +13,7 @@ public class UIScoreController : MonoBehaviour
     private int XPLevel;
     public int currentScore = 0;
     public int currentXp = 0;
-    private int maxXp = 10000;
+    private int maxXp = 500;
     public Slider xpSlider;
     private int recordScore;
 
@@ -39,6 +39,9 @@ public class UIScoreController : MonoBehaviour
         if(currentXp > maxXp)
         {
             Debug.Log("LEVEL UP!");
+            //Chamar tela de UPGRADE
+            GameEvents.current.PlayerUpgrade();
+
             XPLevel++;
             ResetMaxXp(maxXp + maxXp / 2); //Trocar essa formula par auma mais balanceada.
         }

@@ -48,4 +48,13 @@ public class GameEvents : MonoBehaviour
             onPlayerPauseTrigger();
     }
     #endregion
+
+    #region Player's Upgrade
+    public event Action onPlayerUpgradeTrigger;
+    public void PlayerUpgrade()
+    {
+        if(onPlayerUpgradeTrigger != null)
+            onPlayerUpgradeTrigger();
+    }
+    #endregion
 }
