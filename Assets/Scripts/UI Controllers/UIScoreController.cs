@@ -13,7 +13,7 @@ public class UIScoreController : MonoBehaviour
     private int XPLevel;
     public int currentScore = 0;
     public int currentXp = 0;
-    private int maxXp = 500;
+    private int maxXp = 10000;
     public Slider xpSlider;
     private int recordScore;
 

@@ -9,14 +9,29 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private GameObject upgradesList;
     [SerializeField] int numberOfCardsOnScreen;
     List<Upgrade> chosenUpgrades;
+    [SerializeField] private Player player;
+    [SerializeField] private PlayerShield shield;
+    [SerializeField] private UIImpulseController impulseUI;
 
     List<Upgrade> AllUpgrades = new List<Upgrade>()
     {
-        new Upgrade {Name = "upgrade 1", Description = "Aumenta a aaa em _%", Increase = 20},
-        new Upgrade {Name = "upgrade 2", Description = "Aumenta a aaa em _%", Increase = 20},
-        new Upgrade {Name = "upgrade 3", Description = "Aumenta a aaa em _%", Increase = 20},
-        new Upgrade {Name = "upgrade 4", Description = "Aumenta a aaa em _%", Increase = 20},
-        new Upgrade {Name = "upgrade 5", Description = "Aumenta a aaa em _%", Increase = 20}
+        //Life
+        new Upgrade { Id = 1, Name = "LIFE", Description = "Recovers _ hit point", Increase = 1, Category = UpgradeCategory.Life },
+        new Upgrade { Id = 2, Name = "LIFE", Description = "Recovers _ hit points", Increase = 2, Category = UpgradeCategory.Life },
+        new Upgrade { Id = 3, Name = "LIFE", Description = "Recovers _ hit points", Increase = 4, Category = UpgradeCategory.Life },
+
+        //Defense
+        new Upgrade { Id = 4, Name = "DEFENSE", Description = "Decrease shild cooldown time in _%", Increase = 50, Category = UpgradeCategory.Defense },
+        new Upgrade { Id = 5, Name = "DEFENSE", Description = "Increase shild active time in _%", Increase = 50, Category = UpgradeCategory.Defense },
+
+        //Attack
+        new Upgrade { Id = 6, Name = "ATTACK", Description = "Increase fire speed in _", Increase = 0.1F, Category = UpgradeCategory.Attack }, //cooldown de 0.4 -> 0.3
+        new Upgrade { Id = 7, Name = "ATTACK", Description = "Increase fire speed in _", Increase = 0.1F, Category = UpgradeCategory.Attack }, //cooldown de 0.3 -> 0.2
+        
+        //Engine
+        new Upgrade { Id = 8, Name = "ENGINE", Description = "Boost uses _% less gasoline", Increase = 50, Category = UpgradeCategory.Engine }, //Diminui a Decrease impulse variable
+        new Upgrade { Id = 9, Name = "ENGINE", Description = "Increases boost recharge speed in _%", Increase = 400, Category = UpgradeCategory.Engine }, //Aumenta a Increase impulse variable
+        new Upgrade { Id = 10, Name = "ENGINE", Description = "Increases impulse tank size in _%", Increase = 100, Category = UpgradeCategory.Engine } //Aumenta a Increase impulse variable
     };
 
     private void Start()
@@ -72,7 +87,8 @@ public class UpgradeManager : MonoBehaviour
             //SpriteRenderer upgradeImage = upgradeCard.transform.GetChild(0).transform.GetChild(1).GetComponent<>();
 
             TMP_Text upgradeTextDescription = upgradeCard.transform.GetChild(0).transform.GetChild(2).GetComponent<TMP_Text>();
-            upgradeTextDescription.text = card.Description;
+            string cardDescription = card.Description.Replace("_", card.Increase.ToString());
+            upgradeTextDescription.text = cardDescription;
 
             Button upgradeButton = upgradeCard.transform.GetChild(0).GetComponent<Button>();
             upgradeButton.onClick.AddListener(() => { ChoosedUpgrade(card); });
@@ -81,30 +97,65 @@ public class UpgradeManager : MonoBehaviour
 
     private void ChoosedUpgrade(Upgrade choosedUpgrade) //Adiciona os upgrades nas propriedades devidas.
     {
-        AllUpgrades.Remove(choosedUpgrade); //Remove o update escolhido da lista original para que ele não seja chamado novamente.
 
-        switch (choosedUpgrade.Name)
+        switch (choosedUpgrade.Id)
         {
-            case "upgrade 1":
-                Debug.Log("UPGRADE:" + "upgrade 1");
-                break;
-            
-            case "upgrade 2":
-                Debug.Log("UPGRADE:" + "upgrade 2");
-                break;
-            
-            case "upgrade 3":
-                Debug.Log("UPGRADE:" + "upgrade 3");
-                break;
-            
-            case "upgrade 4":
-                Debug.Log("UPGRADE:" + "upgrade 4");
+            case 1:
+                Debug.Log("UPGRADE - " + choosedUpgrade.Name + ": " + choosedUpgrade.Description);
+                player.currentHealth += (int)choosedUpgrade.Increase;
+                player.healthBar.SetHealth(player.currentHealth, player.maxHealth);
                 break;
 
-            case "upgrade 5":
-                Debug.Log("UPGRADE:" + "upgrade 5");
+            case 2:
+                Debug.Log("UPGRADE - " + choosedUpgrade.Name + ": " + choosedUpgrade.Description);
+                player.currentHealth += (int)choosedUpgrade.Increase;
+                player.healthBar.SetHealth(player.currentHealth, player.maxHealth);
                 break;
+
+            case 3:
+                Debug.Log("UPGRADE - " + choosedUpgrade.Name + ": " + choosedUpgrade.Description);
+                player.currentHealth += (int) choosedUpgrade.Increase;
+                player.healthBar.SetHealth(player.currentHealth, player.maxHealth);
+                break;
+
+            case 4:
+                Debug.Log("UPGRADE - " + choosedUpgrade.Name + ": " + choosedUpgrade.Description);
+                shield.shieldRechargeTime = shield.shieldRechargeTime * choosedUpgrade.Increase / 100;
+                break;
+
+            case 5:
+                Debug.Log("UPGRADE - " + choosedUpgrade.Name + ": " + choosedUpgrade.Description);
+                shield.shieldActiveTime *= (1 + (choosedUpgrade.Increase / 100)); //1,5 ou 150%
+                break;
+
+            case 6:
+                Debug.Log("UPGRADE - " + choosedUpgrade.Name + ": " + choosedUpgrade.Description);
+                player.shootCooldown -= choosedUpgrade.Increase;
+                break;
+
+            case 7:
+                Debug.Log("UPGRADE - " + choosedUpgrade.Name + ": " + choosedUpgrade.Description);
+                player.shootCooldown -= choosedUpgrade.Increase;
+                break;
+
+            case 8:
+                Debug.Log("UPGRADE - " + choosedUpgrade.Name + ": " + choosedUpgrade.Description);
+                player.decreaseImpulseVariantValue *= choosedUpgrade.Increase / 100;
+                break;
+
+            case 9:
+                Debug.Log("UPGRADE - " + choosedUpgrade.Name + ": " + choosedUpgrade.Description);
+                player.increaseImpulseVariantValue *= choosedUpgrade.Increase / 100;
+                break;
+
+            case 10:
+                Debug.Log("UPGRADE - " + choosedUpgrade.Name + ": " + choosedUpgrade.Description);
+                player.maxImpulse += choosedUpgrade.Increase;
+                impulseUI.SetMaxImpulse(player.maxImpulse);
+                break;
+
         }
+        AllUpgrades.Remove(choosedUpgrade); //Remove o update escolhido da lista original para que ele não seja chamado novamente.
         gameObject.SetActive(false);
         CleanCardList();
         Time.timeScale = 1;
@@ -139,8 +190,18 @@ public class UpgradeManager : MonoBehaviour
 //Upgrade proprieties
 public class Upgrade
 {
+    public int Id { get; set; }
     public string Name { get; set; }
     //public Sprite Image { get; set; }
     public string Description { get; set; }
     public float Increase { get; set; }
+    public UpgradeCategory Category { get; set; }
+}
+
+public enum UpgradeCategory
+{
+    Life,
+    Attack,
+    Defense,
+    Engine
 }

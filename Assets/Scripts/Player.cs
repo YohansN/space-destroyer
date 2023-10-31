@@ -8,7 +8,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     #region Properties
-    [SerializeField] private int maxHealth = 10;
+    [SerializeField] public int maxHealth = 10;
     [SerializeField] public int currentHealth = 10;
     [SerializeField] private float rotationalSpeed;
     [SerializeField] public float maxImpulse;
@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     [SerializeField] private SceneController sceneController;
 
     //UI
-    [SerializeField] private UIHealthController healthBar;
+    [SerializeField] public UIHealthController healthBar;
     [SerializeField] private UIScoreController uiScore;
     [SerializeField] private UIImpulseController impulseBar;
 

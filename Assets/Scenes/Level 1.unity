@@ -3043,6 +3043,9 @@ MonoBehaviour:
   upgradePrefab: {fileID: 1252531362828377485, guid: 1000fdffaa72133468aee910a4c299b8, type: 3}
   upgradesList: {fileID: 1767983812}
   numberOfCardsOnScreen: 3
+  player: {fileID: 1738491006}
+  shield: {fileID: 1235882726}
+  impulseUI: {fileID: 862832361}
 --- !u!1 &849934374
 GameObject:
   m_ObjectHideFlags: 0
