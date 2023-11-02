@@ -7,6 +7,10 @@ public class UpgradeManager : MonoBehaviour
 {
     [SerializeField] private GameObject upgradePrefab;
     [SerializeField] private GameObject upgradesList;
+    [SerializeField] private Sprite lifeIcon;
+    [SerializeField] private Sprite defenseIcon;
+    [SerializeField] private Sprite attackIcon;
+    [SerializeField] private Sprite engineIcon;
     [SerializeField] int numberOfCardsOnScreen;
     List<Upgrade> chosenUpgrades;
     [SerializeField] private Player player;
@@ -84,7 +88,25 @@ public class UpgradeManager : MonoBehaviour
             TMP_Text upgradeTextName = upgradeCard.transform.GetChild(0).transform.GetChild(0).GetComponent<TMP_Text>();
             upgradeTextName.text = card.Name;
 
-            //SpriteRenderer upgradeImage = upgradeCard.transform.GetChild(0).transform.GetChild(1).GetComponent<>();
+            Image upgradeImage = upgradeCard.transform.GetChild(0).transform.GetChild(1).GetComponent<Image>();
+            switch (card.Category)
+            {
+                case UpgradeCategory.Life:
+                    upgradeImage.sprite = lifeIcon;
+                    break;
+
+                case UpgradeCategory.Attack:
+                    upgradeImage.sprite = attackIcon;
+                    break;
+
+                case UpgradeCategory.Defense:
+                    upgradeImage.sprite = defenseIcon;
+                    break;
+
+                case UpgradeCategory.Engine:
+                    upgradeImage.sprite = engineIcon;
+                    break;
+            }
 
             TMP_Text upgradeTextDescription = upgradeCard.transform.GetChild(0).transform.GetChild(2).GetComponent<TMP_Text>();
             string cardDescription = card.Description.Replace("_", card.Increase.ToString());
