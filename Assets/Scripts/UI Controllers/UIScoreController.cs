@@ -10,16 +10,16 @@ public class UIScoreController : MonoBehaviour
 {
     public TMP_Text scoreText;
     [SerializeField] private TMP_Text XPLevelText;
-    private int XPLevel;
+    public int XPLevel = 0;
     public int currentScore = 0;
     public int currentXp = 0;
-    private int maxXp = 10000;
+    public int maxXp = 10000;
     public Slider xpSlider;
     private int recordScore;
 
     private void Awake()
     {
-        XPLevel = 0;
+        //XPLevel = 0;
         recordScore = PlayerPrefs.GetInt("record");    
     }
 

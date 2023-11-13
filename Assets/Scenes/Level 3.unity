@@ -2188,9 +2188,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c635c8764c16d9944a2c49396b3fe2f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRateEasy: 6
-  spawnRateHard: 1.5
-  enemyWaveType: 1
+  spawnRateEasy: 5
+  spawnRateHard: 1
+  enemyWaveType: 3
   levelOne: {fileID: 2319941950512031309, guid: 6a8225ff96d3dd94287d108425b8fe81, type: 3}
   levelTwo: {fileID: 2319941950512031309, guid: 48c8c36cfa8278f46abdcc17c59bd826, type: 3}
   levelThree:
@@ -3332,8 +3332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc250c530b5df4489248356abb1e460, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minutes: 1
-  seconds: 30
+  minutes: 2
+  seconds: 0
   enemySpawner: {fileID: 483534068}
 --- !u!114 &859063736
 MonoBehaviour:

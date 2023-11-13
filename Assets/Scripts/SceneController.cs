@@ -19,6 +19,7 @@ public class SceneController : MonoBehaviour
     private UIScoreController scoreAndXp;
     private Player player;
     private PlayerShield shield;
+    private UpgradeManager upgradeManager;
     #endregion
 
     private void Awake()
@@ -26,6 +27,7 @@ public class SceneController : MonoBehaviour
         scoreAndXp = FindAnyObjectByType<UIScoreController>();
         player = FindAnyObjectByType<Player>();
         shield = FindAnyObjectByType<PlayerShield>();
+        upgradeManager = FindAnyObjectByType<UpgradeManager>();
         LoadDataState();
 
         cutsceneContainer.SetActive(false);
@@ -111,9 +113,13 @@ public class SceneController : MonoBehaviour
 
         StatusDataController.currentScore = scoreAndXp.currentScore;
         StatusDataController.currentXp = scoreAndXp.currentXp;
+        StatusDataController.XPLevel = scoreAndXp.XPLevel;
+        StatusDataController.maxXp = scoreAndXp.maxXp;
 
         StatusDataController.shieldActiveTime = shield.shieldActiveTime;
         StatusDataController.shieldRechargeTime = shield.shieldRechargeTime;
+
+        StatusDataController.AllUpgrades = upgradeManager.AllUpgrades;
     }
 
     private void LoadDataState()
@@ -129,9 +135,13 @@ public class SceneController : MonoBehaviour
 
             scoreAndXp.currentScore = StatusDataController.currentScore;
             scoreAndXp.currentXp = StatusDataController.currentXp;
+            scoreAndXp.XPLevel = StatusDataController.XPLevel;
+            scoreAndXp.maxXp = StatusDataController.maxXp;
 
             shield.shieldActiveTime = StatusDataController.shieldActiveTime;
             shield.shieldRechargeTime = StatusDataController.shieldRechargeTime;
+
+            upgradeManager.AllUpgrades = StatusDataController.AllUpgrades;
         }
     }
 }

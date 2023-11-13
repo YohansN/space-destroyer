@@ -16,8 +16,9 @@ public class UpgradeManager : MonoBehaviour
     [SerializeField] private Player player;
     [SerializeField] private PlayerShield shield;
     [SerializeField] private UIImpulseController impulseUI;
+    [SerializeField] private AudioSource upgradeSFX;
 
-    List<Upgrade> AllUpgrades = new List<Upgrade>()
+    public List<Upgrade> AllUpgrades = new List<Upgrade>()
     {
         //Life
         new Upgrade { Id = 1, Name = "LIFE", Description = "Recovers _ hit point", Increase = 1, Category = UpgradeCategory.Life },
@@ -119,7 +120,7 @@ public class UpgradeManager : MonoBehaviour
 
     private void ChoosedUpgrade(Upgrade choosedUpgrade) //Adiciona os upgrades nas propriedades devidas.
     {
-
+        upgradeSFX.Play();
         switch (choosedUpgrade.Id)
         {
             case 1:
