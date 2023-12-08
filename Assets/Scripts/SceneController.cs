@@ -22,13 +22,17 @@ public class SceneController : MonoBehaviour
     private UpgradeManager upgradeManager;
     #endregion
 
+    private readonly int firstLevelIndex = 2;
+
     private void Awake()
     {
         scoreAndXp = FindAnyObjectByType<UIScoreController>();
         player = FindAnyObjectByType<Player>();
         shield = FindAnyObjectByType<PlayerShield>();
         upgradeManager = FindAnyObjectByType<UpgradeManager>();
-        LoadDataState();
+        
+        if(SceneManager.GetActiveScene().buildIndex != firstLevelIndex)
+            LoadDataState();
 
         cutsceneContainer.SetActive(false);
         gameOverUI.SetActive(false);
@@ -77,14 +81,13 @@ public class SceneController : MonoBehaviour
 
     public void MainMenu()
     {
-        //Adicionar Scene de menu posteriormente
-        //SceneManager.LoadScene(0);
+        SceneManager.LoadScene(0);
     }
 
     public void RestartGame()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(firstLevelIndex);
     }
     #endregion
 
@@ -124,7 +127,7 @@ public class SceneController : MonoBehaviour
 
     private void LoadDataState()
     {
-        if(SceneManager.GetActiveScene().buildIndex > 0)
+        if(SceneManager.GetActiveScene().buildIndex >= firstLevelIndex)
         {
             //Quando a fase começa os status salvos são carregados aqui.
             player.currentHealth = StatusDataController.currentHealth;
