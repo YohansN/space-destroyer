@@ -1,6 +1,6 @@
 # Space Destroyer
 
-<img src="file:///C:/Users/Usu%C3%A1rio/Pictures/Space%20Destroyer/Space%20Destroyer%20Logo%20Title.png" title="Space Destroyer Logo" alt="Space Detroyer Logo" data-align="center">
+<img src="gameplay_images/Space%20Destroyer%20Logo%20Title.png" title="Space Destroyer Logo" alt="Space Detroyer Logo" data-align="center">
 
 ## About the project
 
@@ -44,18 +44,18 @@ The game features an upgrade system where you can select a random upgrade card e
 
 1 - Gameplay
 
-<img title="Gameplay Screenshot" src="file:///C:/www/unity_games/space-destroyer/Space Destroyer/gameplay_images/gameplay_screenshot3.png" alt="loading-ag-149" data-align="center" style="zoom:100%;">
+<img title="Gameplay Screenshot" src="gameplay_images/gameplay_screenshot3.png" alt="Gameplay Screenshot" data-align="center">
 
 2 - Gameplay : Upgrade screen
 
-<img title="Upgrade System" src="file:///C:/www/unity_games/space-destroyer/Space%20Destroyer/gameplay_images/gameplay_screenshot1.png" alt="Upgrade System Screenshot" data-align="center">
+<img title="Upgrade System" src="gameplay_images/gameplay_screenshot1.png" alt="Upgrade System Screenshot" data-align="center">
 
 3 - Game Over Screen
 
-<img src="file:///C:/www/unity_games/space-destroyer/Space%20Destroyer/gameplay_images/gameplay_screenshot4.png" title="Game Over Screen" alt="Game Over Screenshot" data-align="center">
+<img src="gameplay_images/gameplay_screenshot4.png" title="Game Over Screen" alt="Game Over Screenshot" data-align="center">
 
 4 - End Game Screen Art
 
-<img src="file:///C:/www/unity_games/space-destroyer/Space%20Destroyer/gameplay_images/sd%20end%20game%20art.png" title="Congratulations Screen" alt="Congratulations Screenshot" data-align="left">
+<img src="/gameplay_images/sd%20end%20game%20art.png" title="Congratulations Screen" alt="Congratulations Screenshot" data-align="center">
 
 
