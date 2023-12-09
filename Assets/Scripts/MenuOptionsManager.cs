@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuOptionsManager : MonoBehaviour
 {
+    [SerializeField] private Animator transition;
     [SerializeField] private AudioSource clickSound;
     #region Main Menu Screen options
     public void PlayButton() 
@@ -14,9 +15,10 @@ public class MenuOptionsManager : MonoBehaviour
     #endregion
 
     //Tutorial screen button
-    public void ExitTutorial() { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); }
-
-    //EndGame screen button
-    //public void BackToMainMenu() { SceneManager.LoadScene(0); }
+    public void ExitTutorial() 
+    {
+        transition.SetTrigger("Start");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 
 }

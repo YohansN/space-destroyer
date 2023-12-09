@@ -85,7 +85,9 @@ public class SceneController : MonoBehaviour
 
     public void MainMenu()
     {
+        Time.timeScale = 1;
         clickSound.Play();
+        transition.SetTrigger("Start");
         SceneManager.LoadScene(0);
     }
 
@@ -93,6 +95,7 @@ public class SceneController : MonoBehaviour
     {
         Time.timeScale = 1;
         clickSound.Play();
+        transition.SetTrigger("Start");
         SceneManager.LoadScene(firstLevelIndex);
     }
     #endregion
