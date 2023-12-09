@@ -16,6 +16,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private PlayableDirector deathCutscene;
     [SerializeField] private GameObject cutsceneContainer;
     [SerializeField] private Animator transition;
+    [SerializeField] private AudioSource clickSound;
 
     #region Passing status variables between scenes
     private UIScoreController scoreAndXp;
@@ -79,16 +80,19 @@ public class SceneController : MonoBehaviour
     {
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1;
+        clickSound.Play();
     }
 
     public void MainMenu()
     {
+        clickSound.Play();
         SceneManager.LoadScene(0);
     }
 
     public void RestartGame()
     {
         Time.timeScale = 1;
+        clickSound.Play();
         SceneManager.LoadScene(firstLevelIndex);
     }
     #endregion
