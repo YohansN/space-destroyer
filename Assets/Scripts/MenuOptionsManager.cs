@@ -11,4 +11,7 @@ public class MenuOptionsManager : MonoBehaviour
     //Tutorial screen button
     public void ExitTutorial() { SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1); }
 
+    //EndGame screen button
+    public void BackToMainMenu() { SceneManager.LoadScene(0); }
+
 }
