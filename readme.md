@@ -42,8 +42,20 @@ The game features an upgrade system where you can select a random upgrade card e
 
 ## Images of the game
 
-<img src="file:///C:/Users/Usu%C3%A1rio/Pictures/Space%20Destroyer/gameplay_screenshot3.png" title="Gameplay Screenshot" alt="Screenshot of the gameplay" data-align="center">
+1 - Gameplay
 
-<img src="file:///C:/Users/Usu%C3%A1rio/Pictures/Space%20Destroyer/gameplay_screenshot1.png" title="Upgrade System Screenshot" alt="Upgrade system screenshot" data-align="center">
+<img title="Gameplay Screenshot" src="file:///C:/www/unity_games/space-destroyer/Space Destroyer/gameplay_images/gameplay_screenshot3.png" alt="loading-ag-149" data-align="center" style="zoom:100%;">
 
-<img src="file:///C:/Users/Usu%C3%A1rio/Pictures/Space%20Destroyer/gameplay_screenshot4.png" title="Game Over Screenshot" alt="Game Over Screenshot" data-align="center">
+2 - Gameplay : Upgrade screen
+
+<img title="Upgrade System" src="file:///C:/www/unity_games/space-destroyer/Space%20Destroyer/gameplay_images/gameplay_screenshot1.png" alt="Upgrade System Screenshot" data-align="center">
+
+3 - Game Over Screen
+
+<img src="file:///C:/www/unity_games/space-destroyer/Space%20Destroyer/gameplay_images/gameplay_screenshot4.png" title="Game Over Screen" alt="Game Over Screenshot" data-align="center">
+
+4 - End Game Screen Art
+
+<img src="file:///C:/www/unity_games/space-destroyer/Space%20Destroyer/gameplay_images/sd%20end%20game%20art.png" title="Congratulations Screen" alt="Congratulations Screenshot" data-align="left">
+
+
