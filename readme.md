@@ -1,6 +1,6 @@
 # Space Destroyer
 
-<img src="file:///C:/Users/Usu%C3%A1rio/Pictures/Space%20Destroyer/Space%20Destroyer%20Logo%20Title.png" title="Space Destroyer Logo" alt="Space Detroyer Logo" data-align="center">
+<img src="gameplay_images/Space%20Destroyer%20Logo%20Title.png" title="Space Destroyer Logo" alt="Space Detroyer Logo" data-align="center">
 
 ## About the project
 
