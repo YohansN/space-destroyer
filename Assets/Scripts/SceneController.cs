@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,6 +15,7 @@ public class SceneController : MonoBehaviour
     [SerializeField] private UIScoreController UIScore;
     [SerializeField] private PlayableDirector deathCutscene;
     [SerializeField] private GameObject cutsceneContainer;
+    [SerializeField] private Animator transition;
 
     #region Passing status variables between scenes
     private UIScoreController scoreAndXp;
@@ -100,8 +102,9 @@ public class SceneController : MonoBehaviour
     private IEnumerator LoadLevel(int levelIndex)
     {
         Debug.Log($"Fase: {levelIndex}");
-        yield return new WaitForSeconds(1f);
         //Chamar transição de fase aqui
+        transition.SetTrigger("Start");
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadSceneAsync(levelIndex);
     }
 
